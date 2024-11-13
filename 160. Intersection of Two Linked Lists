@@ -1,0 +1,88 @@
+Intuition
+count nodes from Each Heads and just minus the count from larger count and move the head of the bigger count to next nodes till it reach the head of the other node then start comparing each node
+
+Approach
+count the nodes from each head and run loop if. nodes are true and compare the nodes if they match return current node and if not return None and if current node is zero return zero
+
+Complexity
+Time complexity:
+it will be O(3N)
+
+Space complexity:
+it will be O(N)
+Code
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        nodeA=headA
+        nodeB=headB
+        countA=1
+        countB=1
+        currentA=headA
+        currentB=headB
+        while nodeA and nodeA.next:
+            nodeA=nodeA.next
+            countA=countA+1
+        while nodeB and nodeB.next:
+            nodeB=nodeB.next
+            countB=countB+1
+        if(countA>countB):
+            countC=countA-countB
+            currAcount=1
+            currBcount=countC
+            while currentA:
+                currentA=currentA.next
+                currAcount=currAcount+1
+                if(currAcount==countC+1):
+                    while currentA and currentB:
+                        if(currentA==currentB):
+                            if(currentA==0 and currentB==0):
+                                return None
+                            else:
+                                return currentA
+                        else:
+                            currentA=currentA.next
+                            currentB=currentB.next  
+            return
+                                 
+        elif(countB>countA):
+            countC=countB-countA
+            currBcount=1
+            currAcount=countC
+            while currentB:
+                currentB=currentB.next
+                currBcount=currBcount+1
+                if(currBcount==countC+1):
+                    while currentA and currentB:
+                        if(currentA==currentB):
+                            if(currentA==0 and currentB==0):
+                                return None
+                            else:
+                                return currentA
+                        else:
+                            currentA=currentA.next
+                            currentB=currentB.next 
+            return
+
+        elif(countA==countB):
+            if(currentA!=None and currentA.next==None and currentB !=None and currentB.next==None):
+                if(currentA==currentB):
+                    return currentA
+                else:
+                     return None
+            
+            while currentA and currentB:                       
+                        if(currentA==currentB):
+                            if(currentA==0 and currentB==0):
+                                return None
+                            else:
+                                return currentA
+                        else:
+                            currentA=currentA.next
+                            currentB=currentB.next
+            return
