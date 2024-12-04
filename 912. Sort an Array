@@ -1,0 +1,33 @@
+# Intuition
+<!-- Describe your first thoughts on how to solve this problem. -->
+
+# Approach
+<!-- Describe your approach to solving the problem. -->
+
+# Complexity
+- Time complexity:
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity:
+<!-- Add your space complexity here, e.g. $$O(n)$$ -->
+
+# Code
+```python3 []
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        # arr =nums
+        # n=len(arr)
+        # for i in range(0,n-1,1):
+        #     mini=arr[i]
+        #     for j in range(i,n,1):
+        #         if arr[j]<=mini:
+        #             temp=arr[j]
+        #             arr[j]=mini
+        #             arr[i]=temp
+        #             mini=arr[i]
+        #         else:
+        #             j=j+1
+                    
+                    
+        return nums
