@@ -1,0 +1,65 @@
+Intuition
+break Down as much as we can using merge sort and combime
+
+Approach
+break, compare, merge
+
+Complexity
+Time complexity:
+nlogn
+
+Space complexity:
+O(N)
+
+Code
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def sortList(self,head):
+        if head is None or head.next is None:
+            return head
+        mid=self.splitlist(head)
+        right=mid
+        left=head
+        left=self.sortList(left)
+        right=self.sortList(right)
+        return self.merge(left,right)
+        
+    def splitlist(self,head):
+        slow=head
+        fast=head
+        prev=None    
+        while fast and fast.next:
+            prev=slow
+            slow=slow.next
+            fast=fast.next.next
+        if prev:
+            prev.next=None
+                
+        return slow
+    def merge(self,left,right):
+        dummy=ListNode(0)
+        tail=dummy
+        while left and right:
+            if(left.val<right.val):
+                tail.next=left
+                left=left.next
+            else:
+                tail.next=right
+                right=right.next
+            tail=tail.next
+        if left:
+            tail.next=left
+            
+        if right:
+            tail.next=right
+            
+     
+        return dummy.next
+
+
+
+        
