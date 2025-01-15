@@ -1,0 +1,43 @@
+REMOVE A LINKEDLIST NODE IF DATA IS == TO PASSING PARAMETER AS INTEGER
+
+Intuition
+ultimate goal is to return the head if after removing the data matches to passed parameter value
+
+Approach
+Before creating the current node I tried with headnode and some how I was ending with headnode after trying a lof a tym I have seen in stackover flowthat we can creat a dummy node and then start checking it Also there were people who written code in just 3 lines but as a begginer I want to make sure myself that I want to learn and understand the concept I used traditional if else
+by moving pointers to next if data matches skkiping the headnode and connecting the prev-node to next node and making next node as head
+
+THE MAIN THING IS HOW ONE CAN HANDLE THE NONETYPE ERROR
+
+Complexity
+Time complexity:
+WE NEEDTO VISIT EVERY NODE SO IT IS BIG O(N)
+
+Space complexity:
+WE NEED TO SAVE EVERY NODE SO IT IS BIG O(N)
+
+Code
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        current_node=ListNode(0)
+        current_node.next=head
+        prev_node=current_node
+        while head:
+            if(head.val==val):
+                next_node=head.next
+                head.next=None
+                head=next_node
+                if(prev_node!=head):
+                    prev_node.next=head
+
+            elif(head.val!=val):
+                prev_node=head
+                next_node=head.next
+                head=next_node
+                
+        return current_node.next

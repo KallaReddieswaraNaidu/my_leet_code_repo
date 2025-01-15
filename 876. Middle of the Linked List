@@ -1,0 +1,37 @@
+Intuition
+Using Slow and Fast pointers
+
+Approach
+if it is odd number of list the fast pointer.next will be None and for even number fast pointer.next.next will be None based on this just written
+if else conditions
+
+Complexity
+Time complexity:
+it will be O(N) because the slow reach half and half reach end but every time it skip a node so it only visit half of the nodes so the Time Complexity will be O(N)
+
+Space complexity:
+
+The Space complexity will be O(N)
+
+Code
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        current_node =head
+        next_node=head
+
+        while next_node:
+            if(next_node.next is None):
+                return current_node
+            else:
+                if(next_node.next.next is None):
+                    return current_node.next
+                else:
+                    current_node=current_node.next
+                    next_node=next_node.next.next
+        return
+        

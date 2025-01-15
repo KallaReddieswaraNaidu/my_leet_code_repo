@@ -1,0 +1,36 @@
+Intuition
+In question it is mentioned as unique elements in node so i just converted array to for easy searching
+
+Approach
+convert array to set and current node and next node values are present continue to net node else break and increase count and move to next node and gain search in list
+
+Complexity
+Time complexity:
+it is O(N) for linkedlist and O(N) for set so overall O(2N)
+
+Space complexity:
+space is O(N) as we convert to set
+
+Code
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
+        current_node=head
+        nums=set(nums)
+        count=0
+        while current_node:
+            if(current_node.val in nums):
+                current_node=current_node.next
+                if(current_node is not None and current_node.val in nums):
+                    current_node=current_node.next
+                if(current_node is None or current_node.val not in nums):
+                    count=count+1
+            else:
+                current_node=current_node.next
+                if(current_node is None):
+                    return count
+        return count

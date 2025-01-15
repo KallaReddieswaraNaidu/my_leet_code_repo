@@ -1,0 +1,65 @@
+ntuition
+apply some kind of logic used in Merge sort
+
+Approach
+I tried with temp1 and temp2 variables and then time limited exceed and for optimisation I tried this one and I will provide the the other code as well in comments
+
+Complexity
+Time complexity:
+O(N+M)since if we take N and M are two lists then each take O(N) and O(M) and i.e O(N+M)
+
+Space complexity:
+O(N)
+
+Code
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+        dummy=ListNode(0)
+        tail=dummy
+        while list1 and list2:
+            if(list1.val<=list2.val):
+                tail.next=list1
+                list1=list1.next
+            else:
+                tail.next=list2
+                list2=list2.next
+            tail=tail.next
+        tail.next = list1 if list1 else list2
+
+        return dummy.next
+
+# class Solution(object):
+#     def mergeTwoLists(self, list1, list2):
+#         first=list1
+#         second=list2
+#         dummy=ListNode(0)
+#         tail=dummy
+#         while first and second:
+#             if(first.val<=second.val):
+#                 temp1=first.next
+#                 temp2=second.next
+#                 tail.next=first
+#                 first.next=second
+#                 first=temp1
+#                 second=temp2
+#                 tail=second
+#             else:
+#                 temp1=second.next
+#                 temp2=first.next
+#                 tail.next=second
+#                 second.next=first
+#                 first=temp2
+#                 second=temp1
+#                 tail=first
+#         if list1==None and list2!=None:
+#             return list2
+#         if list2==None and list1!=None:
+#             return list1
+
+        
+#         return dummy.next

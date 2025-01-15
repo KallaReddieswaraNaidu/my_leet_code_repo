@@ -1,0 +1,31 @@
+Intuition
+By looking at this problem I got the first instance as a selection sort problem like arranging the minimum to maximum
+
+Approach
+selection sort algorithm
+
+Complexity
+Time complexity:
+it is big O(N*N)
+because two for loops has to run
+
+Space complexity:
+It is O(N) no extra space is used unless if I use stack which does not comes under selection sort
+
+Code
+class Solution(object):
+    def sortColors(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        n =len(nums)
+        for i in range(n-1):
+            left=nums[i]
+            for j in range(i+1,n):
+                right=nums[j]
+                if(left>right):
+                    temp=nums[i]
+                    nums[i]=right
+                    nums[j]=temp
+                    left=nums[i]
