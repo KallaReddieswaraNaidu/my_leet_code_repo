@@ -1,0 +1,31 @@
+Intuition
+using selection sort
+
+Approach
+fix the highest number and then iterate
+
+Complexity
+Time complexity:
+n*n
+
+Space complexity:
+O(n)
+
+Code
+class Solution(object):
+    def sortPeople(self, names, heights):
+        n=len(names)
+        h=len(heights)
+        for i in range(0,n-1):
+            temp =heights[i]
+            temp1=names[i]
+            for j in range(i+1,n):
+                if(heights[j]>heights[i]):
+                    temp3=heights[j]
+                    heights[j]=heights[i]
+                    heights[i]=temp3
+                    temp4=names[j]
+                    names[j]=names[i]
+                    names[i]=temp4
+                  
+        return names
