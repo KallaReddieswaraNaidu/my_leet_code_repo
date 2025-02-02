@@ -1,0 +1,26 @@
+Intuition
+Firstly thought to iterate and tried and able to make pass only 28 test cases then thought to split and conquer
+
+Approach
+step1: Define k i.e how many times that you have to rotate if K>N then k=k%len(nums) means if you rotate a array of [1,2] of 3 times firstly it would be 2,1 and 2nd time it would be 1,2 and in 3rd time it would be 2,1 which is equalent to one rotation the 3%2 gives the remainder of 1 so k becomes one and gives more control on iterations and in addition to that we knew that if n==1 or n==0 means if it just one element there is no point in rotation so I am directly trying to return the resultant array
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+
+O(N)
+
+Code
+class Solution(object):
+    def rotate(self, nums, k):
+        n=len(nums)
+        if n==0 or n==1:
+            return nums
+        k=k%n
+        l=n-k
+        first_half=nums[:l]
+        second_half=nums[l:]
+        nums[:]=second_half[::]+first_half[::]
+        return nums
