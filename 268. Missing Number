@@ -1,0 +1,23 @@
+Intuition
+JUST CHECK I IS PRESENT OR NOT
+
+Approach
+RUN THE LOOP TILL N
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def missingNumber(self, nums):
+        n=len(nums)
+        i=0
+        while i<=n:
+            if i in nums:
+                i=i+1
+            else:
+                return i
