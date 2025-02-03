@@ -1,0 +1,32 @@
+Intuition
+count the consucutes one using counters
+
+Approach
+by using two pointer appreoach
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def findMaxConsecutiveOnes(self, nums):
+        n=len(nums)
+        i=0
+        count=0
+        count1=0
+        while i<n:
+            if nums[i]==1:
+                count=count+1
+                i=i+1
+                if count> count1:
+                    count1=count
+            else:
+                i=i+1
+                if count>count1:
+                    count1=count
+                count=0
+        return count1
