@@ -1,0 +1,35 @@
+Intuition
+count the number of times I will get my K
+
+Approach
+using prefixsum store the value of sum and check if sum is already there increase the frequesncy and if rem in prefixsum count the frequency of the remaing value and return it
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+o(N)
+
+Code
+class Solution(object):
+    def subarraySum(self, nums, k):
+        n=len(nums)
+        i=0
+        count=0
+        sum=0
+        presum={}
+        while i<n:
+            sum=sum+nums[i]
+            rem=sum-k
+            if rem==0:
+                count+=1
+            if rem in presum:
+                count+=presum[rem]          
+            i=i+1
+            if sum not in presum:
+                presum[sum]=1
+            else:
+                presum[sum]+=1
+
+        return count
