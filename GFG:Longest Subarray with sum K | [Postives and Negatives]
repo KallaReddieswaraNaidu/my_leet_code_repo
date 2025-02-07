@@ -1,0 +1,64 @@
+Longest Subarray with Sum K(POSITIVE & NEGATIVE NUMBERS)
+PREREQUIRED CONCEPTS: loops,Hashing(Dict in Python), Basic Math
+
+Problem:
+
+Given an array arr[] containing integers and an integer k, your task is to find the length of the longest subarray where the sum of its elements is equal to the given value k. If there is no subarray with sum equal to k, return 0.
+
+Examples:
+
+Input: arr[] = [10, 5, 2, 7, 1, -10], k = 15
+Output: 6
+Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. The length of the longest subarray with a sum of 15 is 6.
+Input: arr[] = [-5, 8, -14, 2, 4, 12], k = -5
+Output: 5
+Explanation: Only subarray with sum = 15 is [-5, 8, -14, 2, 4] of length 5.
+Input: arr[] = [10, -10, 20, 30], k = 5
+Output: 0
+Explanation: No subarray with sum = 5 is present in arr[].
+
+CODE IN PYTHON:
+# User function Template for python3
+
+class Solution:
+    def longestSubarray(self, arr, k):  
+        i=0
+        n=len(arr)
+        maxlen=0
+        sum=0
+        presum={}
+        while i<n:
+            sum=sum+arr[i]
+            if sum==k:
+                maxlen=max(maxlen,i-0+1)
+            rem=sum-k
+            #---the belo if rem==0 is not mandatory this is just for educational purpose 
+            # if someone looking at my this will give confidence that if remaining value ==0 we
+            # need to consider the current index
+            if rem==0:
+                 maxlen=max(maxlen,i-0+1)
+            if rem in presum:
+                temp=i-presum[rem]
+                maxlen=max(maxlen,temp)
+                
+            if sum not in presum:
+                presum[sum]=i
+            i=i+1
+        return maxlen
+        
+                            # BRUTE FORCE 
+
+        # i=0
+        # n=len(arr)
+        # maxlen=0
+    
+        # while i<n:
+        #     j=i
+        #     sum=0
+        #     while j<n:
+        #         sum=sum+arr[j]
+        #         if sum==k:
+        #             maxlen =max(maxlen,j-i+1)
+        #         j=j+1
+        #     i=i+1
+        # return maxlen
