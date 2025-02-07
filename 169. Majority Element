@@ -1,0 +1,28 @@
+Intuition
+Count the frequency
+
+Approach
+Use Dict and element is in Dict increase frequency if not add to the Disct
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def majorityElement(self, nums):
+        i=0
+        prefixsum={0:1}
+        n=len(nums)
+        while i<n:
+            s=nums[i]
+            if s in prefixsum:
+                prefixsum[s]=prefixsum[s]+1
+            if s not in prefixsum:
+                prefixsum[s]=1
+            if prefixsum[s]>(n//2):
+                return s
+            i=i+1
