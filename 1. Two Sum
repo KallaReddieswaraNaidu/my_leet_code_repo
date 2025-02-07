@@ -1,0 +1,31 @@
+Intuition
+Use the dict and playaround with target values
+
+Approach
+add the elements to dic whose rem not in dic and check that if balance of incremented value matched to elemnts in the dic get the current index and dic value index and return
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def twoSum(self, nums, target):
+        i=0
+        k=target
+        n=len(nums)
+        prefixsum={}
+        sum=0
+        while i<n:
+            sum=k-nums[i]
+
+            if sum in prefixsum:
+                return prefixsum[sum],i
+            
+            if sum not in prefixsum:
+                j=nums[i]
+                prefixsum[j]=i
+            i=i+1
