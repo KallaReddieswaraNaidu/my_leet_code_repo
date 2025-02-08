@@ -1,0 +1,37 @@
+Intuition
+Brute Force: Using two looping while standing at ith index to till end of the array using max update and return max value gives desired subarray sum
+
+Kadanes Algo:
+Initialise the max as first element and sum=0, update max value if some thing greather the current max and make sure sum should be in positive integer if it goes beyond zero again assign it to zero this will ensure to find maximum sum, if array have only negavites then any how max will return minimum negative number interms which is close to zero
+
+Approach
+Using While loop run from zero to n-1, using kadanes algorithm
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1) Since, Not using any extra space
+
+Code
+class Solution(object):
+    def maxSubArray(self, nums):
+        i=0
+        n=len(nums)
+        #max=-sys.maxsize
+        max=nums[i]
+        #also if we conside
+        sum=0
+        while i<n:
+            
+            if sum==0:
+                start=i
+            sum=sum+nums[i]
+            if sum>max:
+                max=sum
+                end=i
+            if sum<0:
+                sum=0
+            i=i+1
+        return max
