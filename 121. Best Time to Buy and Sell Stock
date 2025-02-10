@@ -1,0 +1,28 @@
+Intuition
+Use Kadanes Algorithm
+
+Approach
+use min and max return max profit
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def maxProfit(self, prices):
+        i=0
+        n=len(prices)
+        profit=0
+        Min= float('inf')
+        Max=0
+        while i<n:
+            price=prices[i]
+            Min=min(Min,price)
+            profit=price-Min
+            Max=max(Max,profit)
+            i=i+1
+        return Max
