@@ -1,0 +1,35 @@
+Intuition
+append based on positive and negatie at odd and even indexes
+
+Approach
+take an empty array of size n and initialise with zeros and run a loop from i to n-1 and if number is positive append at even indexs and if number is negative append at odd indexs
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def rearrangeArray(self, nums):
+        i=0
+        pos=0
+        neg=0
+        n=len(nums)
+        rnums = [0] * n
+        
+        pj=0
+        nj=1
+        while i<n:
+            if(nums[i]>=0 and pj<n):
+                pos=nums[i]
+                rnums[pj]=pos
+                pj=pj+2
+            if(nums[i]<0 and nj<n):
+                neg=nums[i]
+                rnums[nj]=neg
+                nj=nj+2
+            i=i+1
+        return rnums
