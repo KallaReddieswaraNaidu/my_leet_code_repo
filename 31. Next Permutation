@@ -1,0 +1,45 @@
+Intuition
+Think like a library how can we do that
+
+Approach
+find the smallest one from the last index and then find the smallest in the next half and swap and then reverse the second half
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def nextPermutation(self, nums):
+        n=len(nums)
+        i=n-2
+        if n==1:
+            return nums
+        while i<n:
+            if nums[i]<nums[i+1]:
+                left=nums[i]
+                right=nums[i+1]
+                leftindex=i
+                rightindex=i+1
+                break
+            else:
+                i=i-1
+            if i==-1:
+                nums[:]=nums[:][::-1]
+                return nums
+
+        rr=i+1
+        Min=float('inf')
+        j=rightindex
+        while j<n:
+            if nums[j]>nums[leftindex]:
+                currentmin=Min
+                Min=min(Min,nums[j])
+                if Min<=currentmin:
+                    rightindex=j
+            j=j+1
+        nums[leftindex],nums[rightindex]=nums[rightindex],nums[leftindex]
+        nums[rr:]=nums[rr:][::-1]
