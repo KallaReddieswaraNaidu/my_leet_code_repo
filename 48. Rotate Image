@@ -1,0 +1,30 @@
+Intuition
+Initial Though create same size dummy matrix and push all the elements
+then realised
+
+Approach
+using four pointers just swap it like a,b=b,a and reverse it
+
+Complexity
+Time complexity:
+O(N*N)
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def rotate(self, matrix):
+        n=len(matrix)
+        i=0
+        while i<n:
+            j=0
+            while j<=i:
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+                j=j+1
+            i=i+1
+        i=0
+        while i<n:
+            matrix[i]=matrix[i][::-1]
+            i=i+1
+        return matrix
