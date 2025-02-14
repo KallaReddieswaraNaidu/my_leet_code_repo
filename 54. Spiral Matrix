@@ -1,0 +1,51 @@
+Intuition
+Run the loops and print
+
+Approach
+left to right and right to bottom and bottom to left and bottom to top print and reduce each lenght or increase for left and top and repeat the process
+
+    # edge case
+    #1.if we have only one  row and 
+    #2. coming from right to left the top should be less than or    equals to bottom 
+    #3. coming from bottom to top the left should be less than or equals to right and felf
+Complexity
+Time complexity:
+O(n*m)
+
+Space complexity:
+O(N)
+
+Code
+class Solution(object):
+    def spiralOrder(self, matrix):
+        n=len(matrix)
+        m=len(matrix[0])
+        ans=[]
+        left=0
+        right=m-1
+        top=0
+        bottom=n-1
+        # edge case
+        #if we have only one  row
+        while top<=bottom and left<=right:
+            i=left
+            while i<=right:
+                ans.append(matrix[top][i])
+                i=i+1
+            top=top+1
+            i=top
+            while i<=bottom:
+                ans.append(matrix[i][right])
+                i=i+1
+            right=right-1
+            i=right
+            while i>=left and top<=bottom:
+                ans.append(matrix[bottom][i])
+                i=i-1
+            bottom=bottom-1
+            i=bottom
+            while i>=top and left<=right:
+                ans.append(matrix[i][left])
+                i=i-1
+            left=left+1
+        return ans
