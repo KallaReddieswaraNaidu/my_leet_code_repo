@@ -1,0 +1,31 @@
+Intuition
+Use hashing and count the appearences
+
+Approach
+Add the unique elements to list and if element appears again increase it appearence count if count>n//3 the add them to set and convert to list and return
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def majorityElement(self, nums):
+        n=len(nums)
+        s={}
+        sets=set()
+        i=0
+        while i<n:
+            temp=nums[i]
+            if temp in s:
+                s[temp]=s[temp]+1
+            if temp not in s:
+                s[temp]=1
+            if s[temp]>n/3:
+                sets.add(temp)
+
+            i=i+1
+        return list(sets)
