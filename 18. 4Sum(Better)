@@ -1,0 +1,38 @@
+ntuition
+Run loop for 3 tyms and use lookup i.e hash if it in hast and unique add to set
+
+Approach
+i=0,j=i+1,k=j=1 AND L IS LOOPUP BETWEEN J AND K IF K not found add to set and increase k if l found in loop return i,j,k,l of nums to a set to make unique and sort before moving to
+
+Complexity
+Time complexity:
+O(N*N*N)
+Space complexity:
+log(N) used for set
+
+Code
+class Solution(object):
+    def fourSum(self, nums, target):
+        i=0
+        n=len(nums)
+        s=set()
+        lkp={}
+        while i<n:
+            j=i+1
+            while j<n:
+                k=j+1
+                while k<n:
+
+                    l=target-(nums[i]+nums[j]+nums[k])
+                    if l in lkp:
+                        temp=[nums[i],nums[j],nums[k],l]
+                        temp.sort()
+                        s.add(tuple(temp))
+                    if l not in lkp:
+                        lkp[nums[k]]=l
+                    k=k+1
+                    if k==n:
+                        lkp.clear()
+                j=j+1
+            i=i+1
+        return list(s)
