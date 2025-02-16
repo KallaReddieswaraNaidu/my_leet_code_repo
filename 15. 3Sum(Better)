@@ -1,0 +1,35 @@
+Intuition
+Run loop for 2 tyms and use lookup i.e hash if it in hast and unique add to set
+
+Approach
+i=0,j=i+1,k IS LOOPUP BETWEEN i and j if J not found add to set and increase j if k found in loop return i,j,k of nums to a set to make unique and sort before moving to set
+
+Complexity
+Time complexity:
+O(N*N)
+
+Space complexity:
+log(n)
+
+Code
+class Solution(object):
+    def threeSum(self, nums):
+        i=0
+        n=len(nums)
+        s=set()
+        lkp={}
+        while i<n:
+            j=i+1
+            while j<n:
+                k=-(nums[i]+nums[j])
+                if k in lkp:
+                    temp=[nums[i],nums[j],k]
+                    temp.sort()
+                    s.add(tuple(temp))
+                if k not in lkp:
+                    lkp[nums[j]]=k
+                j=j+1
+                if j==n:
+                    lkp.clear()
+            i=i+1
+        return list(s)
