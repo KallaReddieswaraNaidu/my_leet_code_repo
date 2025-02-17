@@ -1,0 +1,29 @@
+Intuition
+Brute force Stand at first and check others using second loop and follow this for all
+
+Approach
+1.sort the intervals
+2.run a loop from i to n-1 add the first interval to answer and check if next interval is continue of this then replace current internal index 1 with max in current indiex1 and already available index1 in answer
+
+Complexity
+Time complexity:
+to sort nlogn and to run loop it will be O(N)
+
+Space complexity:
+In wrost case it will be O(N)
+
+Code
+class Solution(object):
+    def merge(self, intervals):
+        nums=intervals
+        n=len(nums)
+        ans=[]
+        nums.sort()
+        for i in range(n):
+            m=len(ans)
+            if m==0 or nums[i][0]>ans[m-1][1]:
+                temp=[nums[i][0],nums[i][1]]
+                ans.append(temp)
+            else:
+                ans[m-1][1]=max(ans[m-1][1],nums[i][1])
+        return ans
