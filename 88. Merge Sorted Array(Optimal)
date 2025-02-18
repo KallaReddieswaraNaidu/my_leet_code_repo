@@ -1,0 +1,28 @@
+Intuition
+1.Bruteforce: create a third array and add elements from both the arrays usinh two pointer by comparing and after adding push the sorted array elements to nums1
+
+Approach
+2.Better Solution:
+If nums2 size is zero simply return nums1 else:
+add the all elements from from the nums2 to nums1 starting from index 'm' and sort the array and return it
+
+Complexity
+Time complexity:
+(m+n)log(m+n) to sort and O(N)
+
+Space complexity:
+O(1) we are not creating any extra array so O(1)
+
+Code
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        if n==0:
+            return nums1
+        else:
+            i=0
+            while i<n:
+                nums1[m]=nums2[i]
+                i=i+1
+                m=m+1
+            nums1.sort()
+        return nums1
