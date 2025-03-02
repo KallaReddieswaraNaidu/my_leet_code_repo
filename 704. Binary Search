@@ -1,0 +1,33 @@
+Intuition
+divide and eliminate the rest of the half and do search in rest of the half
+
+Approach
+Pass the paramets to a search function which breaks half and get the result
+
+Complexity
+Time complexity:
+O(log(N))
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def search(self, nums, target):
+        n=len(nums)
+        low=n-n
+        high=n-1
+        target=target
+        return self.mysearch(nums,target,low,high)
+
+    def mysearch(self,nums,target,low,high):
+        target=target
+        mid = low+(high-low)//2
+        if high<low:
+            return -1
+        elif target==nums[mid]:
+            return mid
+        elif target>nums[mid]:
+            return self.mysearch(nums,target,mid+1,high)
+        else:
+            return self.mysearch(nums,target,low,mid-1)       
