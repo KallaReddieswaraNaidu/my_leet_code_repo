@@ -1,0 +1,55 @@
+ntuition
+Need to figure out first and last occurance means one search operation to find the left most and other on the right most
+
+Approach
+Initialise the firrst and last index and write two functions in order to seach the left most and right most by dividing and conquer the apporach
+
+Complexity
+Time complexity:
+O(log(n))
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def searchRange(self, nums, target):
+        n=len(nums)
+        low=n-n
+        high=n-1
+        arr=nums
+        if n==0 or target >arr[n-1]:
+            return [-1,-1]  
+        ans_low=self.first_index(nums,target,low,high)
+        ans_high=self.last_index(nums,target,low,high)
+        return [ans_low,ans_high]
+
+    def first_index(self,nums,target,low,high):
+        first_index=-1
+
+        while low<=high:
+            mid=low+(high-low)//2
+            if nums[mid]==target:
+                first_index=mid
+                high=mid-1
+            elif nums[mid]<target:
+                low=mid+1
+            else:
+                high=mid-1
+        return first_index
+    
+    def last_index(self,nums,target,low,high):
+        last_index=-1
+
+        while low<=high:
+            mid=low+(high-low)//2
+            if nums[mid]==target:
+                last_index=mid
+                low=mid+1
+            elif nums[mid]<target:
+                low=mid+1
+            else:
+                high=mid-1
+        return last_index   
+     
+    
