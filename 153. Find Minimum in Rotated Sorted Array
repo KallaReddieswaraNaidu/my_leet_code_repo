@@ -1,0 +1,32 @@
+ntuition
+find the sorted part and find the minimum
+
+Approach
+figureout which part is smaller either left or right and use min function to find minum number
+
+Complexity
+Time complexity:
+O(log(n))
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def findMin(self, nums):
+        n=len(nums)
+        low=n-n
+        high=n-1
+        ans=float('inf')
+        while low<=high:
+            mid =low+(high-low)//2
+            if nums[mid]>=nums[high]:
+                ans=min(nums[mid],ans)
+                low=mid+1
+            elif nums[mid]<=nums[low]:
+                ans=min(nums[mid],ans)
+                high=mid-1
+            elif nums[low]<nums[mid]:
+                ans=min(nums[low],ans)
+                return ans
+        return ans
