@@ -1,0 +1,40 @@
+Intuition
+identify the sorted part and perform operation
+
+Approach
+identify the sorted part and perform operation and if target in left part eliminate the right part from searching or if in right part eliminate the left part
+
+Complexity
+Time complexity:
+O(log(n)
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def search(self, nums, target):
+        n=len(nums)
+        low=n-n
+        high=n-1
+        ans=-1
+        while low<=high:
+            mid=low+(high-low)//2
+            if nums[mid]==target:
+                return True
+            if nums[low]==nums[mid]==nums[high]:
+                low=low+1
+                high=high-1
+                continue
+
+            if nums[low]<=nums[mid]:
+                if target<=nums[mid] and target>=nums[low]:
+                    high=mid-1
+                else:
+                    low=mid+1
+            elif nums[low]>=nums[mid]:
+                if target>=nums[mid] and target<=nums[high]:
+                    low=mid+1
+                else:
+                    high=mid-1
+        return False
