@@ -1,0 +1,35 @@
+Intuition
+since every element is repeated twice if mid val is odd then its mid+1 should be same and if mid value is even then mid-1 should be equal to mid if not bring the low to mid+1
+
+Approach
+since every element is repeated twice if mid val is odd then its mid+1 should be same and if mid value is even then mid-1 should be equal to mid if not bring the low to mid+1 else bring high to mid-1 and everytime your low stands at single element in the end return the arrr[low]
+
+Complexity
+Time complexity:
+O(log(n))
+
+Space complexity:
+O(1)
+
+Code
+class Solution(object):
+    def singleNonDuplicate(self, nums):
+         arr=nums
+         n=len(nums)
+         low=n-n
+         high=n-1
+         if arr[low]==arr[high]:
+            return arr[low]
+         while low<=high:
+            mid=low+(high-low)//2
+            if mid%2==0:
+                if mid+1!=n and arr[mid]==arr[mid+1]:
+                    low=mid+1
+                else:
+                    high=mid-1
+            elif mid%2==1:
+                if mid-1>=0 and arr[mid]==arr[mid-1]:
+                    low=mid+1
+                else:
+                    high=mid-1
+         return arr[low]
