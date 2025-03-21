@@ -1,0 +1,30 @@
+Intuition
+Find the Range and use Binary Search
+
+Approach
+First I have figured out the maximum number and starting to find mid if mid is greater than threshold then moved my high to mid-1 else moved low=mid+1 and at the end retrned low because if high crosses low then my low is my answer
+
+Complexity
+Time complexity:
+O(log(Max)) here Max is the maximum worst case possibity to run my loop
+
+Space complexity:
+O(1)
+
+Code
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        n=len(piles)
+        Max=max(piles) #find the maximum number 
+        low=1 #obviously u dont have zero since atleast u have 1 hour
+        high=Max # the range can be minimum of 1 hr or maximum of maximum pile 
+        while low<=high:
+            mid=low+(high-low)//2
+            sum=0
+            for i in range(0,n):
+                sum=sum+math.ceil(piles[i]/mid)
+            if sum<=h:
+                high=mid-1
+            else:
+                low=mid+1
+        return low
