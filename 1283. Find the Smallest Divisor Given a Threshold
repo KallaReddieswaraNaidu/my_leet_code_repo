@@ -1,0 +1,29 @@
+Intuition
+The Key words are Minimum so we can apply for General Binary search and how can I divide that I decided here
+
+Approach
+I want to figureout range that is what is the maximum number in the given array and if mid of divisor is less than or equal to threshold then my minimum on the left side so I just brought my high to mid-1 else i.e if mid>threshold then divisor on the right side of mid so I brought mid to low=mid+1
+
+Complexity
+Time complexity:
+O(Nlog(Max))where N is the iterations in the for loop
+
+Space complexity:
+O(1)
+
+Code
+class Solution:
+    def smallestDivisor(self, nums: List[int], threshold: int) -> int:
+        n=len(nums)
+        low=1
+        high=max(nums)
+        while low<=high:
+            mid=low+(high-low)//2
+            sum=0
+            for i in range (0,n):
+                sum=sum+ceil(nums[i]/mid)
+            if sum<=threshold:
+                high=mid-1
+            else:
+                low=mid+1
+        return low
